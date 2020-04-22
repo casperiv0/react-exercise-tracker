@@ -76,7 +76,7 @@ class AddExercise extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="date">Enter Description</label>
-                        <input required type="text" id="description" value={this.state.description} className="form-control" placeholder="Date" onChange={this.onChangeDesc} />
+                        <input required type="text" id="description" value={this.state.description} className="form-control" placeholder="Description" onChange={this.onChangeDesc} />
                     </div>
                     <div className="form-group">
                         <a className="btn btn-danger mr-2" href="/">Cancel</a>

@@ -9,6 +9,10 @@ A simple exercise tracker
 - [ ] add users
 - maybe more
 
+# Video Demo
+
+**Link:** soon
+
 # What I learned
 
 - ReactJS
