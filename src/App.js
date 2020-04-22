@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
+import './index.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Exercises from './components/Exercises'
 import AddExercise from './components/AddExercise'
@@ -10,8 +11,10 @@ class App extends Component {
     return (
       <Router >
         <Navbar />
-        <Route path="/" exact component={Exercises} />
-        <Route path="/add" exact component={AddExercise} />
+        <div className="text-light">
+          <Route path="/" exact component={Exercises} />
+          <Route path="/add" exact component={AddExercise} />
+        </div>
       </Router>
 
     );

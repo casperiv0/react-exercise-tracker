@@ -25,7 +25,7 @@ class Exercises extends Component {
     render() {
         const exercises = this.state.exercises;
         return (
-            <div className="container-fluid grid">
+            <div className="container-fluid">
                 <h1>All Exercises</h1>
 
                 {
