@@ -4,14 +4,14 @@ A simple exercise tracker
 
 # Todos
 
-- [ ] able to edit exercise
-- [ ] able to delete exercise
+- [x] able to edit exercise
+- [x] able to delete exercise
 - [ ] add users
 - maybe more
 
 # Video Demo
 
-**Link:** soon
+**Link:** https://imgur.com/a/1GIVxJx
 
 # What I learned
 

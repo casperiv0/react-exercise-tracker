@@ -22,4 +22,31 @@ router.post("/add-exercise", (req, res) => {
         .catch(err => res.send(err))
 });
 
+
+router.get("/edit/:id", (req, res) => {
+    Exercise.findById(req.params.id)
+        .then(exercise => res.json(exercise))
+        .catch(err => res.send(err));
+});
+
+router.post('/edit/:id', async (req, res) => {
+    const exercise = await Exercise.findById(req.params.id);
+
+    exercise.exercise = req.body.exercise;
+    exercise.duration = Number(req.body.duration);
+    exercise.date = req.body.date;
+    exercise.description = req.body.description
+    exercise.save()
+        .then(() => res.sendStatus(200))
+        .catch(err => res.send(err));
+});
+
+
+router.get("/delete/:id", async (req, res) => {
+    const exercise = await Exercise.findByIdAndDelete(req.params.id)
+        .then(() => res.redirect("http://localhost:3000"))
+        .catch(err => res.send(err));
+})
+
+
 module.exports = router;

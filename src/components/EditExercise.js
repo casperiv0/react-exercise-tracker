@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import axios from 'axios';
 
-class AddExercise extends Component {
+class EditExercise extends Component {
 
     constructor() {
         super()
@@ -42,7 +42,7 @@ class AddExercise extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:3001/add-exercise", {
+        axios.post("http://localhost:3001/edit/"+this.props.match.params.id, {
             exercise: this.state.exercise,
             duration: this.state.duration,
             date: this.state.date,
@@ -56,7 +56,18 @@ class AddExercise extends Component {
         });
     }
 
-
+    componentDidMount() {
+        axios.get("http://localhost:3001/edit/" + this.props.match.params.id)
+            .then(res => {
+                this.setState({
+                    exercise: res.data.exercise,
+                    duration: res.data.duration,
+                    date: res.data.date,
+                    description: res.data.description
+                })
+            })
+            .catch(err => console.log(err));
+    }
 
     render() {
         return (
@@ -67,7 +78,7 @@ class AddExercise extends Component {
                         <input required type="text" id="exercise" value={this.state.exercise} className="form-control" placeholder="Exercise" onChange={this.onChangeExercise} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="duration">Enter Duration(In Minutes) </label>
+                        <label htmlFor="duration">Enter Duration</label>
                         <input required type="number" id="duration" value={this.state.duration} className="form-control" placeholder="Duration" onChange={this.onChangeDuration} />
                     </div>
                     <div className="form-group">
@@ -80,7 +91,7 @@ class AddExercise extends Component {
                     </div>
                     <div className="form-group">
                         <a className="btn btn-danger mr-2" href="/">Cancel</a>
-                        <button type="submit" className="btn btn-primary">Add Exercise</button>
+                        <button type="submit" className="btn btn-primary">Update Exercise</button>
                     </div>
                 </form>
             </div>
@@ -88,4 +99,4 @@ class AddExercise extends Component {
     };
 };
 
-export default AddExercise
+export default EditExercise;

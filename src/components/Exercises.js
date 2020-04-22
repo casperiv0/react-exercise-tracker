@@ -8,7 +8,8 @@ class Exercises extends Component {
         super();
 
         this.state = {
-            exercises: []
+            exercises: [],
+            loading: true
         };
     };
 
@@ -17,7 +18,8 @@ class Exercises extends Component {
         axios.get("http://localhost:3001/")
             .then(res => {
                 this.setState({
-                    exercises: res.data
+                    exercises: res.data,
+                    loading: false
                 });
             });
     };
@@ -29,11 +31,11 @@ class Exercises extends Component {
                 <h1>All Exercises</h1>
 
                 {
-                    exercises.length > 0 ?
-                        exercises.map(data =>
-                            <ExerciseItem key={data._id} exercise={data.exercise} duration={data.duration} date={data.date} description={data.description}/>
-                        )
-                        : <h3>There are no exercises yet, add one <a href="/add">Here</a> </h3>
+                    this.state.loading ? "Loading" : exercises.length > 0 ?
+                    exercises.map(data =>
+                        <ExerciseItem key={data._id} id={data._id} exercise={data.exercise} duration={data.duration} date={data.date} description={data.description}/>
+                    )
+                    : <h3>There are no exercises yet, add one <a href="/add">Here</a> </h3>
                 }
 
             </div>
