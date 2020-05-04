@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Exercises from './components/Exercises'
 import AddExercise from './components/AddExercise'
 import EditExercise from './components/EditExercise'
+import AddUser from './components/AddUser'
 
 
 class App extends Component {
@@ -17,6 +18,9 @@ class App extends Component {
           <Route path="/" exact component={Exercises} />
           <Route path="/add" exact component={AddExercise} />
           <Route path="/edit/:id" exact component={EditExercise} />
+
+          <Route path="/user/add" exact component={AddUser} />
+          <Route path="/user/edit/:id" exact component={AddUser} />
         </div>
       </Router>
 

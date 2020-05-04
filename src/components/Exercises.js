@@ -15,7 +15,7 @@ class Exercises extends Component {
 
 
     componentDidMount() {
-        axios.get("http://localhost:3001/")
+        axios.get("http://localhost:3001/exercises/")
             .then(res => {
                 this.setState({
                     exercises: res.data,
@@ -33,9 +33,9 @@ class Exercises extends Component {
                 {
                     this.state.loading ? "Loading" : exercises.length > 0 ?
                     exercises.map(data =>
-                        <ExerciseItem key={data._id} id={data._id} exercise={data.exercise} duration={data.duration} date={data.date} description={data.description}/>
+                        <ExerciseItem key={data._id} id={data._id} exercise={data.exercise} duration={data.duration} date={data.date} description={data.description} user={data.username} />
                     )
-                    : <h3>There are no exercises yet, add one <a href="/add">Here</a> </h3>
+                    : <p>There are no exercises yet, add one <a href="/add" className="text-light">Here</a> </p>
                 }
 
             </div>

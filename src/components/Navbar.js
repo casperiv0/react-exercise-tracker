@@ -13,6 +13,7 @@ class Navbar extends Component {
                     <div className="navbar-nav">
                         <a className="nav-item nav-link active" href="/">Home<span className="sr-only">(current)</span></a>
                         <a className="nav-item nav-link" href="/add">Add Exercise</a>
+                        <a className="nav-item nav-link" href="/user/add">Add User</a>
                     </div>
                 </div>
             </nav>

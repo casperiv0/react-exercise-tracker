@@ -14,8 +14,9 @@ router.post("/add-exercise", (req, res) => {
     const duration = req.body.duration;
     const date = req.body.date;
     const description = req.body.description
+    const username = req.body.username
 
-    const newExercise = new Exercise({ exercise, duration, date, description });
+    const newExercise = new Exercise({ exercise, duration, date, description, username });
 
     newExercise.save()
         .then(() => res.sendStatus(200))
@@ -36,6 +37,7 @@ router.post('/edit/:id', async (req, res) => {
     exercise.duration = Number(req.body.duration);
     exercise.date = req.body.date;
     exercise.description = req.body.description
+    exercise.username = req.body.username
     exercise.save()
         .then(() => res.sendStatus(200))
         .catch(err => res.send(err));
@@ -43,7 +45,7 @@ router.post('/edit/:id', async (req, res) => {
 
 
 router.get("/delete/:id", async (req, res) => {
-    const exercise = await Exercise.findByIdAndDelete(req.params.id)
+    Exercise.findByIdAndDelete(req.params.id)
         .then(() => res.redirect("http://localhost:3000"))
         .catch(err => res.send(err));
 })

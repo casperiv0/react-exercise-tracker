@@ -10,8 +10,13 @@ class AddExercise extends Component {
             exercise: "",
             duration: 0,
             date: "",
-            description: ""
+            description: "",
+            username: "",
+            users: []
         }
+
+
+        this.onChangeUsername = this.onChangeUsername.bind(this)
 
     };
 
@@ -40,43 +45,82 @@ class AddExercise extends Component {
         });
     }
 
+    onChangeUsername = (e) => {
+        this.setState({
+            username: e.target.value
+        });
+    }
+
     onSubmit = (e) => {
+        console.log(this.state.username);
+
         e.preventDefault()
-        axios.post("http://localhost:3001/add-exercise", {
+        axios.post("http://localhost:3001/exercises/add-exercise", {
             exercise: this.state.exercise,
             duration: this.state.duration,
             date: this.state.date,
-            description: this.state.description
+            description: this.state.description,
+            username: this.state.username
         }).then(res => {
             if (res.status === 200) {
                 window.location = "/"
             } else {
-                return alert("something went wrong!")
+                return
             }
-        });
-    }
+        })
+            .catch(err => {
+                return console.log(err);
+            })
+    };
+
+    componentDidMount() {
+        axios.get("http://localhost:3001/users/")
+            .then(res => {
+                this.setState({
+                    users: res.data
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
 
 
     render() {
+        const { exercise, duration, date, description, users, username } = this.state;
         return (
             <div className="container-fluid mt-2">
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label htmlFor="exercise">Enter Exercise</label>
-                        <input required type="text" id="exercise" value={this.state.exercise} className="form-control" placeholder="Exercise" onChange={this.onChangeExercise} />
+                        <input required type="text" id="exercise" value={exercise} className="form-control" placeholder="Exercise" onChange={this.onChangeExercise} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="duration">Enter Duration(In Minutes) </label>
-                        <input required type="number" id="duration" value={this.state.duration} className="form-control" placeholder="Duration" onChange={this.onChangeDuration} />
+                        <input required type="number" id="duration" value={duration} className="form-control" placeholder="Duration" onChange={this.onChangeDuration} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="date">Enter Date</label>
-                        <input required type="date" id="date" value={this.state.date} className="form-control" placeholder="Date" onChange={this.onChangeDate} />
+                        <input required type="date" id="date" value={date} className="form-control" placeholder="Date" onChange={this.onChangeDate} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="date">Enter Description</label>
-                        <input required type="text" id="description" value={this.state.description} className="form-control" placeholder="Description" onChange={this.onChangeDesc} />
+                        <input required type="text" id="description" value={description} className="form-control" placeholder="Description" onChange={this.onChangeDesc} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="date">Enter User</label>
+                        <select className="form-control" required value={username} onChange={this.onChangeUsername}>
+                            {
+                                users.map((user) => {
+                                    return <option 
+                                    defaultValue
+                                    key={user.username}
+                                    value={user.username}> {user.username}
+                                    </option>;
+                                })
+                            }
+                        </select>
                     </div>
                     <div className="form-group">
                         <a className="btn btn-danger mr-2" href="/">Cancel</a>

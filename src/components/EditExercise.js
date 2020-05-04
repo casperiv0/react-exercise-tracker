@@ -42,7 +42,7 @@ class EditExercise extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:3001/edit/"+this.props.match.params.id, {
+        axios.post("http://localhost:3001/exercises/edit/"+this.props.match.params.id, {
             exercise: this.state.exercise,
             duration: this.state.duration,
             date: this.state.date,
@@ -57,7 +57,7 @@ class EditExercise extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:3001/edit/" + this.props.match.params.id)
+        axios.get("http://localhost:3001/exercises/edit/" + this.props.match.params.id)
             .then(res => {
                 this.setState({
                     exercise: res.data.exercise,

@@ -5,10 +5,10 @@ class ExerciseItem extends Component {
         return (
             <div className="card mt-2 border-dark">
                 <div className="card-header bg-dark text-light border-dark">
-                    Exercise: {this.props.exercise}
+                    Exercise: {this.props.exercise} By {this.props.user}
                     <div className="float-right">
-                        <a href={"http://localhost:3001/delete/" + this.props.id} className="btn btn-danger mr-2">Delete</a>
-                        <a href={"http://localhost:3000/edit/" + this.props.id} className="btn btn-success">Edit</a>
+                        <a href={"http://localhost:3001/exercices/delete/" + this.props.id} className="btn btn-danger mr-2">Delete</a>
+                        <a href={"http://localhost:3000/exercices/edit/" + this.props.id} className="btn btn-success">Edit</a>
                     </div>
                 </div>
                 <div className="card-body bg-secondary text-light">

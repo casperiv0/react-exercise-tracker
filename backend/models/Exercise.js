@@ -16,6 +16,10 @@ const exerciseSchema = mongoose.Schema({
     description: {
         type: String,
         required: false
+    },
+    username: {
+        type: String,
+        required: true
     }
 });
 
