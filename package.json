@@ -1,7 +1,8 @@
 {
-  "name": "exercise",
+  "name": "react-exercise-tracker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dev-caspertheghost.github.io/react-exercise-tracker/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

@@ -51,7 +51,7 @@ class AddExercise extends Component {
                     </div>
                     <div className="form-group">
                         <a className="btn btn-danger mr-2" href="/">Cancel</a>
-                        <button type="submit" className="btn btn-primary">Add Username</button>
+                        <button type="submit" className="btn btn-primary">Add User</button>
                     </div>
                 </form>
             </div>

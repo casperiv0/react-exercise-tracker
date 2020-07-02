@@ -111,12 +111,13 @@ class AddExercise extends Component {
                     <div className="form-group">
                         <label htmlFor="date">Enter User</label>
                         <select className="form-control" required value={username} onChange={this.onChangeUsername}>
+                            <option value="">Select..</option>
                             {
                                 users.map((user) => {
-                                    return <option 
-                                    defaultValue
-                                    key={user.username}
-                                    value={user.username}> {user.username}
+                                    return <option
+                                        defaultValue
+                                        key={user.username}
+                                        value={user.username}> {user.username}
                                     </option>;
                                 })
                             }

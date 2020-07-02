@@ -42,7 +42,7 @@ class EditExercise extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:3001/exercises/edit/"+this.props.match.params.id, {
+        axios.post("http://localhost:3001/exercises/edit/" + this.props.match.params.id, {
             exercise: this.state.exercise,
             duration: this.state.duration,
             date: this.state.date,
@@ -53,7 +53,8 @@ class EditExercise extends Component {
             } else {
                 return alert("something went wrong!")
             }
-        });
+        })
+            .catch(err => console.log(err));
     }
 
     componentDidMount() {

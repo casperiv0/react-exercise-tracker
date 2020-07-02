@@ -16,11 +16,10 @@ class App extends Component {
         <Navbar />
         <div className="text-light">
           <Route path="/" exact component={Exercises} />
-          <Route path="/add" exact component={AddExercise} />
-          <Route path="/edit/:id" exact component={EditExercise} />
+          <Route path="/exercises/add" exact component={AddExercise} />
+          <Route path="/exercises/edit/:id" exact component={EditExercise} />
 
           <Route path="/user/add" exact component={AddUser} />
-          <Route path="/user/edit/:id" exact component={AddUser} />
         </div>
       </Router>
 
