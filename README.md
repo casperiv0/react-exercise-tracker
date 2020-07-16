@@ -6,8 +6,7 @@ A simple exercise tracker
 
 - [x] able to edit exercise
 - [x] able to delete exercise
-- [ ] add users
-- maybe more
+- [x] add users
 
 # Video Demo
 
@@ -16,6 +15,7 @@ A simple exercise tracker
 # What I learned
 
 - ReactJS
+- React Router
 - MongoDB
 - Express Router
 

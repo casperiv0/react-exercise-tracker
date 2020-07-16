@@ -9,12 +9,8 @@ router.get("/", (req, res) => {
 });
 
 
-router.post("/add-exercise", (req, res) => {
-    const exercise = req.body.exercise;
-    const duration = req.body.duration;
-    const date = req.body.date;
-    const description = req.body.description
-    const username = req.body.username
+router.post("/", (req, res) => {
+    const { exercise, duration, date, description, username } = req.body;
 
     const newExercise = new Exercise({ exercise, duration, date, description, username });
 
