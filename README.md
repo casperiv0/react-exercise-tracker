@@ -18,5 +18,3 @@ A simple exercise tracker
 - React Router
 - MongoDB
 - Express Router
-
-Idea and tutorial: https://github.com/beaucarnes/mern-exercise-tracker-mongodb
