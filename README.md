@@ -2,17 +2,11 @@
 
 A simple exercise tracker
 
-# Todos
+## Video Demo
 
-- [x] able to edit exercise
-- [x] able to delete exercise
-- [x] add users
+**Link:** <https://imgur.com/a/1GIVxJx>
 
-# Video Demo
-
-**Link:** https://imgur.com/a/1GIVxJx
-
-# What I learned
+## What I learned
 
 - ReactJS
 - React Router

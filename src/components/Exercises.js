@@ -1,60 +1,43 @@
-import React, { Component } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import ExerciseItem from "./ExerciseItem";
 
-class Exercises extends Component {
-  constructor() {
-    super();
+const Exercises = () => {
+  const [loading, setLoading] = useState(true);
+  const [exercises, setExercises] = useState([]);
 
-    this.state = {
-      exercises: [],
-      loading: true,
-    };
-  }
-
-  componentDidMount() {
-    axios({
+  const fetchExercises = useCallback(async () => {
+    const { data } = await axios({
       url: "http://localhost:3001/exercises",
       method: "GET",
-    }).then((res) => {
-      this.setState({
-        exercises: res.data,
-        loading: false,
-      });
     });
-  }
 
-  render() {
-    const exercises = this.state.exercises;
-    return (
-      <div className="container-fluid">
-        <h1>All Exercises</h1>
+    setLoading(false);
+    setExercises(data);
+  }, []);
 
-        {this.state.loading ? (
-          "Loading"
-        ) : exercises.length > 0 ? (
-          exercises.map((data) => (
-            <ExerciseItem
-              key={data._id}
-              id={data._id}
-              exercise={data.exercise}
-              duration={data.duration}
-              date={data.date}
-              description={data.description}
-              user={data.username}
-            />
-          ))
-        ) : (
-          <p>
-            There are no exercises yet, add one{" "}
-            <a href="/add" className="text-light">
-              Here
-            </a>
-          </p>
-        )}
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    fetchExercises();
+  }, [fetchExercises]);
+
+  return (
+    <div className="container-fluid">
+      <h1>All Exercises</h1>
+
+      {loading ? (
+        "Loading"
+      ) : exercises.length > 0 ? (
+        exercises.map((data) => <ExerciseItem key={data._id} item={data} />)
+      ) : (
+        <p>
+          There are no exercises yet, add one{" "}
+          <a href="/add" className="text-light">
+            Here
+          </a>
+        </p>
+      )}
+    </div>
+  );
+};
 
 export default Exercises;
